@@ -1,16 +1,26 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
 const fs = require('fs')
 
 module.exports.run = async(client, msg, args) => {
 
-    client.commands.map((command) => {
+    const mainHelp = new MessageEmbed()
+        .setTitle("Main Help Page")
+        .setDescription("This help page shows the main help page!")
+        .setColor("RANDOM")
+        .setAuthor(client.user.username)
+        .setFields(
+            {name: "Main info page.", value: "https://github.com/Pironielsje/loseebot/blob/main/README.md"}
+        )
 
-        const cmdName = command.help.name
-        const cmdCat = command.help.category
-        const cmdDesc = command.help.description
+    const row = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setCustomId('fun')
+                .setLabel('😂 Fun')
+                .setStyle('PRIMARY')
+        )    
 
-        msg.reply(`Ok: ${cmdName} ${cmdCat} ${cmdDesc}`)
-    })
+    msg.reply({embeds: [mainHelp], components: [row]})
 
 }
 
