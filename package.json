@@ -1,0 +1,27 @@
+{
+  "name": "loseebot",
+  "version": "1.0.0",
+  "description": "bingymathob",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pironielsje/loseebot.git"
+  },
+  "keywords": [
+    "bot",
+    "utility"
+  ],
+  "author": "Niels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pironielsje/loseebot/issues"
+  },
+  "homepage": "https://github.com/Pironielsje/loseebot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "ms": "^2.1.3"
+  }
+}
