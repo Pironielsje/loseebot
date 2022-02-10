@@ -1,4 +1,4 @@
-const {Client, Intents, Collection} = require('discord.js')
+const {Client, Intents, Collection, Interaction} = require('discord.js')
 const config = require('./config.json')
 const fs = require('fs')
 
@@ -56,6 +56,14 @@ client.on('messageCreate', async(msg) => {
     } catch (error) {
         console.error(error)
         msg.reply("Something went wrong!")
+    }
+
+})
+
+client.on('interactionCreate', async(interaction) => {
+
+    if(interaction.id === "fun") {
+        await interaction.reply({content: "Hoi!"})
     }
 
 })

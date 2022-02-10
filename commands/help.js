@@ -7,7 +7,6 @@ module.exports.run = async(client, msg, args) => {
         .setTitle("Main Help Page")
         .setDescription("This help page shows the main help page!")
         .setColor("RANDOM")
-        .setAuthor(client.user.username)
         .setFields(
             {name: "Main info page.", value: "https://github.com/Pironielsje/loseebot/blob/main/README.md"}
         )
