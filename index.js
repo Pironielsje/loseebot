@@ -19,8 +19,11 @@ for(file of cmdFiles) {
 
     client.commands.set(command.help.name, command)
     client.category.set(command.help.category, command)
-    client.aliases.set(command.help.aliases, command)
     client.description.set(command.help.description, command)
+
+    for(let alias of command.help.aliases) {
+        client.aliases.set(alias, command)
+    }
 
     console.log(`👌${file} LOADED!`)
 
