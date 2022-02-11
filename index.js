@@ -1,4 +1,4 @@
-const {Client, Intents, Collection, Interaction} = require('discord.js')
+const { Client, Intents, Collection, Interaction } = require('discord.js')
 const config = require('./config.json')
 const fs = require('fs')
 
@@ -13,7 +13,7 @@ client.description = new Collection()
 
 const cmdFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 
-for(file of cmdFiles) {
+for (file of cmdFiles) {
 
     const command = require(`./commands/${file}`)
 
@@ -21,7 +21,7 @@ for(file of cmdFiles) {
     client.category.set(command.help.category, command)
     client.description.set(command.help.description, command)
 
-    for(let alias of command.help.aliases) {
+    for (let alias of command.help.aliases) {
         client.aliases.set(alias, command)
     }
 
@@ -29,27 +29,27 @@ for(file of cmdFiles) {
 
 }
 
-client.once('ready',() => {
+client.once('ready', () => {
     console.log(`${client.user.username} is ready!`)
 })
 
 client.on('messageCreate', async(msg) => {
 
-    if(msg.author.bot) return
-    
+    if (msg.author.bot) return
+
     const prefix = config.prefix
 
     const msgArray = msg.content.split(" ")
 
     const command = msgArray[0]
-    
+
     const args = msgArray[0]
 
-    if(!msg.content.startsWith(prefix)) return
+    if (!msg.content.startsWith(prefix)) return
 
     const cmdData = client.commands.get(command.slice(prefix.length)) || client.aliases.get(command.slice(prefix.length))
 
-    if(!cmdData) return
+    if (!cmdData) return
 
     try {
         await cmdData.run(client, msg, args)
@@ -62,8 +62,8 @@ client.on('messageCreate', async(msg) => {
 
 client.on('interactionCreate', async(interaction) => {
 
-    if(interaction.id === "fun") {
-        await interaction.reply({content: "Hoi!"})
+    if (interaction.id === "fun") {
+        await interaction.reply({ content: "Hoi!" })
     }
 
 })
